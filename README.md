@@ -8,6 +8,7 @@ ip: 198.199.114.89
 
 ### Update Server
  check ubuntu for updates - `sudo apt-get update`
+ 
  get updates - `sudo apt-get upgrade`
 
 ### Create New User
