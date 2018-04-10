@@ -1,10 +1,21 @@
+# Configuring Server for a Python Flask Application
+
+## About
+
+this is the final project for the udacity full stack nanodegree. The goal
+is to securely put our flask, database, application on a secure server with firewalls enabled
+
+## Steps to Configure Server
+
 create droplet on digital ocean
 
-hostname: UdacityServer
+my server's name hostname: UdacityServer
 
-ip: 198.199.114.89
+My server's ip: 198.199.114.89
 
- remotely connect to server - `ssh root@198.199.114.89`
+remotely connect to server - `ssh root@198.199.114.89`
+
+above line uses ssh keys already set up on my local machine and with digital ocean
 
 ### Update Server
  check ubuntu for updates - `sudo apt-get update`
@@ -23,7 +34,7 @@ Give user sudo privelages - `sudo nano /etc/sudoers.d/grader`
 
 ### Create SSH keys
 
-
+On your local machine:
 
 Create new Key `ssh keygen`  
 
@@ -109,5 +120,5 @@ enable firewall - `sudo ufw enable`
 ### configure local timezone to UTC
 
  `sudo dpkg-reconfigure tzdata`
- 
+
  select none of above, then UTC
