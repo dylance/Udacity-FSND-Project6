@@ -36,7 +36,7 @@ Give user sudo privelages - `sudo nano /etc/sudoers.d/grader`
 
 On your local machine:
 
-Create new Key `ssh keygen`  
+Create new Key `ssh-keygen`  
 
 save key in desired location with desired name
 
