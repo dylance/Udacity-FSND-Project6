@@ -3,11 +3,13 @@
 ## About
 
 this is the final project for the udacity full stack nanodegree. The goal
-is to securely put our flask, database, application on a secure server with firewalls enabled
+is to securely put our flask application on a secure server with firewalls enabled and connect the flask app to a sql database
 
 ## Steps to Configure Server
 
 create droplet on digital ocean
+
+Create a hostname for you server.
 
 my server's name hostname: UdacityServer
 
@@ -24,11 +26,11 @@ above line uses ssh keys already set up on my local machine and with digital oce
 
 ### Create New User
 
-Create User -  `sudo adduser grader`
+Create User -  `sudo adduser <YOUR USER NAME>`
 
-Give user sudo privelages - `sudo nano /etc/sudoers.d/grader`
+Give user sudo privelages - `sudo nano /etc/sudoers.d/<YOUR USER NAME>`
 
- add text to grader file in sudoers.d -  `grader ALL=(ALL) NOPASSWD:ALL`
+Add this text to user's file in sudoers.d -  `<YOUR USER NAME> ALL=(ALL) NOPASSWD:ALL`
 
  exit server `exit`
 
@@ -40,26 +42,27 @@ Create new Key `ssh keygen`
 
 save key in desired location with desired name
 
+log on to server as grader  
 
- log on to server as grader  
+go to root directory - `cd ~`
 
- go to root directory - `cd ~`
-
- make directory to store public key - `mkdir .ssh`
+make directory to store public key - `mkdir .ssh`
 
 make file with authorized keys - `touch .ssh/authorized_keys`
 
 open nano to edit file -  `nano .ssh/authorized_keys`
 
- copy paste text from pub key onto .ssh/authorized keys
+copy paste text from public key on your local machine to  .ssh/authorized keys on your server
 
-give only user, grader, access to .ssh folder. `chmod 700 .ssh`
+give only the user you created access to .ssh folder. `chmod 700 .ssh`
 
 change permission for authorized keys to read only for other users - `chmod 644 .ssh/authorized_keys`
 
- exit server and close ssh connection `exit`
+exit server and close ssh connection `exit`
+
 
 log onto server -  `ssh grader@198.199.114.89 -i ~/Desktop/id_rsa`
+log onto server -  `ssh grader@198.199.114.89 -i <your ssh key>`
 
 ### enable  forced key based authentication
 
