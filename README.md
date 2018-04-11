@@ -3,16 +3,21 @@
 ## About
 
 this is the final project for the Udacity Full Stack Nanodegree. The goal
-is to securely put the fourth project onto a web server with firewalls enabled and root login disabled. The fourth project is a flask application that gets data from a sql database. the project can be seen here:
+is to securely put the fourth project onto a web server with firewalls enabled and root login disabled. The fourth project is a flask application that gets data from a sql database.
+
+The project can be seen here: https://github.com/dylance/Udacity-FSND-Project4
 
 IP Address Used: 198.199.114.89
+
+url: http://198.199.114.89/
 
 ## Software Installed on Server
 
 -Python 2
-- git
+-git
 -nginx
-PostgreSQL
+-PostgreSQL
+-mod_wsgi
 
 ## Steps to Configure Server
 
@@ -70,9 +75,9 @@ change permission for authorized keys to read only for other users - `chmod 644 
 exit server and close ssh connection `exit`
 
 
-log onto server for me -  `ssh grader@198.199.114.89 -i ~/Desktop/id_rsa`
+log onto server for me -  `ssh grader@198.199.114.89 -i <YOUR SSH KEY`
 
-log onto server -  `ssh grader@198.199.114.89 -i <your ssh key>`
+log onto server -  `ssh grader@198.199.114.89 -i <YOUR SSH KEY>`
 
 ### enable  forced key based authentication
 
@@ -107,7 +112,7 @@ restard sshd service by running command `service sshd restart`
 can also disable root log in in this file
 
 
-`ssh grader@198.199.114.89 -i ~/Desktop/id_rsa`
+`ssh grader@198.199.114.89 -i <YOUR SSH KEY>`
 
 `-i ~/Desktop/id_rsa` is just where I have my private key stored instead of default location.
 
@@ -125,9 +130,9 @@ enable firewall - `sudo ufw enable`
 
  to log in
 
- `ssh -i ~/Desktop/id_rsa grader@198.199.114.89 -p 2200`
+ `ssh -i <YOUR SSH KEY> grader@198.199.114.89 -p 2200`
 
-`-i ~/Desktop/id_rsa` is just where I have my private key stored instead of default location.
+
 
 
 ### configure local timezone to UTC
@@ -138,15 +143,17 @@ enable firewall - `sudo ufw enable`
 
 
 
- #### set up uwsgi with nginx
+#### set up uWSGI with nginx
+
+follow this link:
+ https://www.digitalocean.com/community/tutorials/how-to-set-up-uwsgi-and-nginx-to-serve-python-apps-on-ubuntu-14-04#definitions-and-concepts
 
 ### install git
 
  `apt-get install git`
 
 
-
- ### Links to help with project
+### Links to help with project
 
  Udacity Server Course
 
