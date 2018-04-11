@@ -2,8 +2,17 @@
 
 ## About
 
-this is the final project for the udacity full stack nanodegree. The goal
-is to securely put our flask application on a secure server with firewalls enabled and connect the flask app to a sql database
+this is the final project for the Udacity Full Stack Nanodegree. The goal
+is to securely put the fourth project onto a web server with firewalls enabled and root login disabled. The fourth project is a flask application that gets data from a sql database. the project can be seen here:
+
+IP Address Used: 198.199.114.89
+
+## Software Installed on Server
+
+-Python 2
+- git
+-nginx
+PostgreSQL
 
 ## Steps to Configure Server
 
@@ -126,3 +135,20 @@ enable firewall - `sudo ufw enable`
  `sudo dpkg-reconfigure tzdata`
 
  select none of above, then UTC
+
+
+
+ #### set up uwsgi with nginx
+
+### install git
+
+ `apt-get install git`
+
+
+
+ ### Links to help with project
+
+ Udacity Server Course
+
+
+ https://www.digitalocean.com/community/tutorials/how-to-set-up-uwsgi-and-nginx-to-serve-python-apps-on-ubuntu-14-04#definitions-and-concepts
