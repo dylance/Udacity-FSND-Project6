@@ -62,6 +62,7 @@ exit server and close ssh connection `exit`
 
 
 log onto server for me -  `ssh grader@198.199.114.89 -i ~/Desktop/id_rsa`
+
 log onto server -  `ssh grader@198.199.114.89 -i <your ssh key>`
 
 ### enable  forced key based authentication
