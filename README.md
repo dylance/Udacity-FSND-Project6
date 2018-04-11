@@ -38,7 +38,7 @@ Add this text to user's file in sudoers.d -  `<YOUR USER NAME> ALL=(ALL) NOPASSW
 
 On your local machine:
 
-Create new Key `ssh keygen`  
+Create new Key `ssh-keygen`  
 
 save key in desired location with desired name
 
