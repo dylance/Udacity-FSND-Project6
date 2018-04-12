@@ -13,6 +13,8 @@ IP Address Used: 198.199.114.89
 
 url: http://198.199.114.89/
 
+SSH port: 2200
+
 ## Software Installed on Server
 
 - Python 2
@@ -137,12 +139,12 @@ Enable firewall - `sudo ufw enable`
 
 
 
-#### set up uWSGI with nginx
+#### Set up uWSGI with nginx
 
 follow instructions on this link:
  https://www.digitalocean.com/community/tutorials/how-to-set-up-uwsgi-and-nginx-to-serve-python-apps-on-ubuntu-14-04#definitions-and-concepts
 
-#### install git
+#### Install git on server
 
  `apt-get install git`
 
