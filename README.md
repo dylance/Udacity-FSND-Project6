@@ -2,10 +2,12 @@
 
 ## About
 
-this is the final project for the Udacity Full Stack Nanodegree. The goal
-is to securely put the fourth project onto a web server with firewalls enabled and root login disabled. The fourth project is a flask application that gets data from a sql database.
+This is the final project for the Udacity Full Stack Nanodegree. The goal
+is to securely put the fourth project, an item catalog, onto a web server with firewalls, root login disabled, and make sure all packages are up to date on the server.
 
-The project can be seen here: https://github.com/dylance/Udacity-FSND-Project4
+A virtual environment is created for the item catalog to avoid any installed dependencies interfering with different versions of the same software on the server. A WSGI entry point is made by importing the main server file into the WSGI app. uWSGI is then configured to server the files. SystemD service file is then used to automatically launch the app on when the server is running. nginx is then used to pass http requests to the server from outside of the server.
+
+The fourth project can be seen here: https://github.com/dylance/Udacity-FSND-Project4
 
 IP Address Used: 198.199.114.89
 
@@ -13,15 +15,15 @@ url: http://198.199.114.89/
 
 ## Software Installed on Server
 
--Python 2
--git
--nginx
--PostgreSQL
--mod_wsgi
+- Python 2
+- Git
+- Nginx
+- PostgreSQL
+- Mod_wsgi
 
 ## Steps to Configure Server
 
-create droplet on digital ocean
+create droplet server on digital ocean
 
 Create a hostname for you server.
 
@@ -33,12 +35,13 @@ remotely connect to server - `ssh root@198.199.114.89`
 
 above line uses ssh keys already set up on my local machine and with digital ocean
 
-### Update Server
+#### Update server
+
  check ubuntu for updates - `sudo apt-get update`
 
  get updates - `sudo apt-get upgrade`
 
-### Create New User
+#### Create new user
 
 Create User -  `sudo adduser <YOUR USER NAME>`
 
@@ -46,78 +49,70 @@ Give user sudo privelages - `sudo nano /etc/sudoers.d/<YOUR USER NAME>`
 
 Add this text to user's file in sudoers.d -  `<YOUR USER NAME> ALL=(ALL) NOPASSWD:ALL`
 
- exit server `exit`
+Exit server - `exit`
 
-### Create SSH keys
+#### Create SSH keys
 
 On your local machine:
 
 Create new Key `ssh-keygen`  
 
-save key in desired location with desired name
+Save key in desired location with desired name - `/Users/austin/.ssh/id_rsa` is the default location and file name for locatl ssh keys
 
-log on to server as grader  
+Log on to server as grader  
 
-go to root directory - `cd ~`
+Ho to root directory - `cd ~`
 
-make directory to store public key - `mkdir .ssh`
+Make directory to store public key - `mkdir .ssh`
 
-make file with authorized keys - `touch .ssh/authorized_keys`
+Make file with authorized keys - `touch .ssh/authorized_keys`
 
-open nano to edit file -  `nano .ssh/authorized_keys`
+Open nano to edit file -  `nano .ssh/authorized_keys`
 
-copy paste text from public key on your local machine to  .ssh/authorized keys on your server
+Copy paste text from public key on your local machine to  .ssh/authorized keys on your server
 
-give only the user you created access to .ssh folder. `chmod 700 .ssh`
+Give only the user you created access to .ssh folder. `chmod 700 .ssh`
 
-change permission for authorized keys to read only for other users - `chmod 644 .ssh/authorized_keys`
+Change permission for authorized keys to read only for other users - `chmod 644 .ssh/authorized_keys`
 
-exit server and close ssh connection `exit`
+Exit server and close ssh connection `exit`
+
+log onto server for me -  `ssh grader@198.199.114.89 -i <YOUR SSH KEY FILE PATH>`
 
 
-log onto server for me -  `ssh grader@198.199.114.89 -i <YOUR SSH KEY`
-
-log onto server -  `ssh grader@198.199.114.89 -i <YOUR SSH KEY>`
-
-### enable  forced key based authentication
+#### Enable  forced key based authentication
 
 `sudo nano /etc/ssh/sshd_config`
 
- change PasswordAuthentication to no
+ Change PasswordAuthentication to no
 
- restart configeration service so it uses new changes. `sudo service ssh restart`
-
-
-### Set up Firewall
+ Restart configuration service so it uses new changes - `sudo service ssh restart`
 
 
-checks firewall status - `sudo ufw status`
+#### Set up Firewall
 
--deny all incoming requests
 
-firewall is not enabled yet so this is ok. - `sudo ufw default deny incoming`
+Checks firewall status - `sudo ufw status`
 
- allow outgoing requests - `sudo ufw default allow outgoing`
+Deny all incoming requests
 
- change default port `sudo nano /etc/ssh/sshd_config`
+Firewall is not enabled yet so this is ok. - `sudo ufw default deny incoming`
 
-locate the line `# Port 22`
+Allow outgoing requests - `sudo ufw default allow outgoing`
+
+Change default port `sudo nano /etc/ssh/sshd_config`
+
+Locate the line `# Port 22`
 
 uncomment the line and change port to 2200
 
-can also disable root log in in this file
+Can also disable root log in in this file
 
-restard sshd service by running command `service sshd restart`
+Restard sshd service by running command `service sshd restart`
 
-can also disable root log in in this file
+Can also disable root log in in this file
 
-
-`ssh grader@198.199.114.89 -i <YOUR SSH KEY>`
-
-`-i ~/Desktop/id_rsa` is just where I have my private key stored instead of default location.
-
-
-set up firewall to allow certain port numbers:
+Set up firewall to allow certain port numbers:
 
 `sudo ufw allow 2200/tcp`
 
@@ -125,17 +120,16 @@ set up firewall to allow certain port numbers:
 
  `sudo ufw allow 123/tcp`
 
-enable firewall - `sudo ufw enable`
+Enable firewall - `sudo ufw enable`
 
 
- to log in
+ To log in
 
  `ssh -i <YOUR SSH KEY> grader@198.199.114.89 -p 2200`
 
 
 
-
-### configure local timezone to UTC
+#### configure local timezone to UTC
 
  `sudo dpkg-reconfigure tzdata`
 
@@ -145,17 +139,18 @@ enable firewall - `sudo ufw enable`
 
 #### set up uWSGI with nginx
 
-follow this link:
+follow instructions on this link:
  https://www.digitalocean.com/community/tutorials/how-to-set-up-uwsgi-and-nginx-to-serve-python-apps-on-ubuntu-14-04#definitions-and-concepts
 
-### install git
+#### install git
 
  `apt-get install git`
 
 
-### Links to help with project
+## Resources to help with project
 
  Udacity Server Course
 
+Digital ocean tutorial on setting up uwsgi and nginx to server flask applications:
 
  https://www.digitalocean.com/community/tutorials/how-to-set-up-uwsgi-and-nginx-to-serve-python-apps-on-ubuntu-14-04#definitions-and-concepts
