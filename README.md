@@ -9,9 +9,9 @@ A virtual environment is created for the item catalog to avoid any installed dep
 
 The fourth project can be seen here: https://github.com/dylance/Udacity-FSND-Project4
 
-IP Address Used: 198.199.114.89
+IP: 198.199.114.89
 
-url: http://198.199.114.89/
+URL: http://198.199.114.89/
 
 SSH port: 2200
 
