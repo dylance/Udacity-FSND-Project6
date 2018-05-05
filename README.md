@@ -11,7 +11,7 @@ The fourth project can be seen here: https://github.com/dylance/Udacity-FSND-Pro
 
 IP: 198.199.114.89
 
-URL: http://198.199.114.89/
+URL: http://southbayprints.com
 
 SSH port: 2200
 
@@ -67,11 +67,13 @@ Go to root directory - `cd ~`
 
 Make directory to store public key - `mkdir .ssh`
 
-Make file with authorized keys - `touch .ssh/authorized_keys`
+Make file with authorized keys - `touch .ssh/authorized_keys`ato
 
 Open nano to edit file -  `nano .ssh/authorized_keys`
 
 Copy paste text from public key on your local machine to  .ssh/authorized_keys on your server
+
+ssh -i ~/Desktop/id_rsa grader@198.199.114.89 -p 2200
 
 Give only the user you created access to .ssh folder. `chmod 700 .ssh`
 
